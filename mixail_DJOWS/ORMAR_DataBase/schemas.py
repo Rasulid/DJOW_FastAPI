@@ -1,22 +1,20 @@
-from typing import List
+from typing import List, Optional
 from pydantic import BaseModel
+import datetime
 
 
 class User(BaseModel):
     id: int
     username: str
 
+
 class UploadVideo(BaseModel):
     title: str
     description: str
-    filename: List[str] = None
-
+    create_at: datetime.datetime
 
 
 class GetVideo(BaseModel):
-    user: List[User]
-    video: List[UploadVideo]
-
-
-class Massages(BaseModel):
-    massages: str
+    user: User
+    title: str
+    description: str
